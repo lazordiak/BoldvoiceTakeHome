@@ -15,3 +15,4 @@ Things to note:
 - I also added an error message for if the data isn't able to be fetched, just so the user isn't left wondering.
 - The mockup includes a number of languages for the 'languages' section of the result screen, when you click into a repo. However, in both the GitHub schema and the responses I scanned, it seems like the language is just a string, so I've only included the one that was provided.
 - Currently, the search only triggers if three characters have been input, and it's on a 500 ms debounce.
+- For the searchbar, the Figma file includes a little X to clear results. I don't have an X in mine, but according to the RN docs, the clearButtonMode="while-editing" prop on TextInput will pop up the little X on iOS while editing. I have not been able to confirm this personally, though.
