@@ -8,6 +8,7 @@ CD into /server and run npm run start -- the server runs on port 4000.
 The app's been tested on web and Android; for testing with Android, you'll need to switch 'localhost' in line 31 of SearchBar.tsx to the ip address of the network your phone is connected to (if you want to scan with Expo).
 
 Things to note:
+- When running on web, the assumption is the device toolbar will be used with a screen width of 375 and a height of 812 (as in the Figma file).
 - The font provided was for iOS only. Since I didn't have an iOS machine, I did some googling and saw SF Pro was originally based off Helvetica. So, the font is in Helvetica. Hopefully it's not too off!
 - Similarly, for the same reason, it hasn't been tested on an iPhone. Sorry 🙏🙏🙏
 - I added a loading indicator for when the data is fetching.
