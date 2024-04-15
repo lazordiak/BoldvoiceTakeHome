@@ -57,15 +57,10 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
           onChangeText={(text) => handler(text)}
           defaultValue={search}
           style={styles.input}
+          clearButtonMode="while-editing"
         />
       </View>
-      {loading && (
-        <ActivityIndicator
-          style={styles.spinner}
-          size="large"
-          color={"#1F6FEB"}
-        />
-      )}
+      {loading && <ActivityIndicator size="large" color={"#1F6FEB"} />}
     </View>
   );
 };
@@ -87,5 +82,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 14,
   },
-  spinner: {},
 });
