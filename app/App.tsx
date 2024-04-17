@@ -1,5 +1,9 @@
 import { RootNavigator } from "./navigation/RootNavigator";
+import { useFonts } from "expo-font";
 
 export default function App() {
-  return <RootNavigator />;
+  const [fontsLoaded] = useFonts({
+    Inter: require("./assets/fonts/Inter.ttf.ttf"),
+  });
+  return <>{fontsLoaded ? <RootNavigator /> : null}</>;
 }
