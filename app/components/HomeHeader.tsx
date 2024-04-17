@@ -1,12 +1,13 @@
 import { View } from "react-native";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { GithubSVG } from "./svgs/GithubSVG";
+import { InterText } from "./StyledText";
 
 export const HomeHeader = () => {
   return (
     <View style={styles.container}>
       <GithubSVG />
-      <Text style={styles.headerText}>Github Repo Search</Text>
+      <InterText style={styles.headerText}>GitHub Repo Search</InterText>
     </View>
   );
 };
