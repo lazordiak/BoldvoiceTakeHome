@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { FunctionComponent, useCallback } from "react";
+import { constructNames } from "../utils/constructNames";
+import { InterText } from "./StyledText";
 
 type ResultsCardProps = {
   avatar: string;
@@ -14,39 +16,15 @@ export const ResultsCard: FunctionComponent<ResultsCardProps> = ({
   description,
   query,
 }) => {
-  const constructNames = () => {
-    const regex = new RegExp(`(${query})`, "gi");
-    const splitString = name.split(regex);
-    return splitString.map((substring, i) => {
-      if (substring.toLowerCase() === query.toLowerCase()) {
-        return (
-          <Text
-            numberOfLines={1}
-            key={i}
-            style={[styles.name, { fontWeight: "700" }]}
-          >
-            {substring}
-          </Text>
-        );
-      } else {
-        return (
-          <Text numberOfLines={1} key={i} style={styles.name}>
-            {substring}
-          </Text>
-        );
-      }
-    });
-  };
-
   const cachedConstructNames = useCallback(constructNames, [name, query]);
 
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={{ uri: avatar }} />
-        {cachedConstructNames()}
+        {cachedConstructNames(query, name, styles)}
       </View>
-      <Text>{description || "No description available."}</Text>
+      <InterText>{description || "No description available."}</InterText>
     </View>
   );
 };
@@ -56,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FBFBFB",
     borderRadius: 10,
-    minHeight: 100,
     marginBottom: 16,
     padding: 16,
   },
