@@ -16,3 +16,14 @@ Things to note:
 - The mockup includes a number of languages for the 'languages' section of the result screen, when you click into a repo. However, in both the GitHub schema and the responses I scanned, it seems like the language is just a string, so I've only included the one that was provided.
 - Currently, the search only triggers if three characters have been input, and it's on a 500 ms debounce.
 - For the searchbar, the Figma file includes a little X to clear results. I don't have an X in mine, but according to the RN docs, the clearButtonMode="while-editing" prop on TextInput will pop up the little X on iOS while editing. I have not been able to confirm this personally, though.
+
+Changes 4/16/24:
+- The header now moves up when the list is scrolled down
+- The text matching in the search screen now carries over into the results screen when clicked into
+- The linear gradient has been tweaked to be more faithful to the original design
+- I saw GitHub wasn't capitalized, now it is
+- The results cards previously had a min-height of 100, now no min-height (as in design)
+- When there's no description on a repo, I put in 'No description available.'
+- I put in the clear search query 'X' button on the search bar for non-iOS devices
+- I still couldn't get SF Pro working on my Windows machine, but I used Inter instead, which a little googling told me was the closest equivalent
+- I made a separate API call in the results screen to get a full list of the languages used in each repo
