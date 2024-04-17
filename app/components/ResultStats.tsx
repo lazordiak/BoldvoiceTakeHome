@@ -1,8 +1,9 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { WatchersSVG } from "./svgs/WatchersSVG";
 import { ForksSVG } from "./svgs/ForksSVG";
 import { StarsSVG } from "./svgs/StarsSVG";
 import { FunctionComponent } from "react";
+import { InterText } from "./StyledText";
 
 type ResultStatsProps = {
   watchers_count: number;
@@ -26,15 +27,21 @@ export const ResultStats: FunctionComponent<ResultStatsProps> = ({
     <View style={[styles.statsContainer, styles.row]}>
       <View style={[styles.row, styles.alignCenter]}>
         <WatchersSVG />
-        <Text style={styles.statsLabel}>{numbersParser(watchers_count)}</Text>
+        <InterText style={styles.statsLabel}>
+          {numbersParser(watchers_count)}
+        </InterText>
       </View>
       <View style={[styles.row, styles.alignCenter]}>
         <ForksSVG />
-        <Text style={styles.statsLabel}>{numbersParser(forks_count)}</Text>
+        <InterText style={styles.statsLabel}>
+          {numbersParser(forks_count)}
+        </InterText>
       </View>
       <View style={[styles.row, styles.alignCenter]}>
         <StarsSVG />
-        <Text style={styles.statsLabel}>{numbersParser(stargazers_count)}</Text>
+        <InterText style={styles.statsLabel}>
+          {numbersParser(stargazers_count)}
+        </InterText>
       </View>
     </View>
   );
