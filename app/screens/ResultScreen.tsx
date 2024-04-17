@@ -56,6 +56,7 @@ export const ResultScreen: FunctionComponent<ResultPageProps> = ({ route }) => {
       <LinearGradient
         style={StyleSheet.absoluteFill}
         colors={["#601FEB1A", "#F1F1F1"]}
+        locations={[0.0, 0.6]}
       />
       <View>
         <Pressable
