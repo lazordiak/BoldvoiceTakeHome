@@ -1,19 +1,18 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-
 export type GithubData = {
   avatar_url: string;
   full_name: string;
   description: string;
-  language: string | null;
   stargazers_count: number;
   watchers_count: number;
   forks_count: number;
   url: string;
 };
 
+type ResultScreenData = GithubData & { query: string };
+
 export type RootStackParamList = {
   Home: undefined;
-  Result: GithubData;
+  Result: ResultScreenData;
 };
 
 declare global {
