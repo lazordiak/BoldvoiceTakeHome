@@ -21,19 +21,18 @@ app.use(helmet());
 
 app.post("/", async (req: Request, res: Response) => {
   try {
-    const octoResponse = await octokit.request("GET /search/repositories", {
+    const { data } = await octokit.request("GET /search/repositories", {
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
       },
       per_page: 20,
       q: req.body.query,
     });
-    const parsedResponse = octoResponse.data.items.map((item) => {
+    const parsedResponse = data.items.map((item) => {
       return {
         avatar_url: item.owner?.avatar_url,
         full_name: item.full_name,
         description: item.description,
-        language: item.language,
         stargazers_count: item.stargazers_count,
         watchers_count: item.watchers_count,
         forks_count: item.forks_count,
@@ -41,6 +40,22 @@ app.post("/", async (req: Request, res: Response) => {
       };
     });
     res.json(parsedResponse);
+  } catch (err) {
+    console.error("An error: " + err);
+    res.json(err);
+  }
+});
+
+app.post("/languages", async (req: Request, res: Response) => {
+  try {
+    const { data } = await octokit.request(
+      `GET /repos/${req.body.owner}/${req.body.repo}/languages`,
+      {
+        owner: req.body.owner,
+        repo: req.body.repo,
+      }
+    );
+    res.json(Object.keys(data));
   } catch (err) {
     console.error("An error: " + err);
     res.json(err);
